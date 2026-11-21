@@ -2,14 +2,21 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alimemonzx/fooocus-colab/blob/main/fooocus_colab.ipynb)
 
-A working version of the official [Fooocus](https://github.com/lllyasviel/Fooocus) Colab notebook for current Google Colab runtimes (Python 3.12).
+A working version of the official [Fooocus](https://github.com/lllyasviel/Fooocus) Colab notebook for current Google Colab runtimes (Python 3.12). Anyone can use it, and it runs in your own Google account.
 
-1. Click **Open in Colab** above.
-2. Runtime → Change runtime type → **T4 GPU**.
-3. Run the cell. If Colab asks to restart the session, click **Cancel**.
-4. Open the `gradio.live` link it prints.
+## How to start
 
-The notebook clones the latest Fooocus on every run, so you always get the current upstream code.
+1. Click **Open in Colab** above and sign in with your Google account.
+2. **Runtime → Change runtime type → T4 GPU** (the free GPU works).
+3. Click ▶ on the code cell. If Colab warns that the notebook wasn't authored by Google, click **Run anyway**.
+4. Wait about 5–8 minutes while it installs and downloads models.
+5. Open the `https://….gradio.live` link printed at the end. Keep the Colab tab open while you use Fooocus.
+
+Your run, your images and any edits stay in your own Colab account. Nothing is saved back to this repo. To keep your own editable copy of the notebook, use **File → Save a copy in Drive**.
+
+Colab deletes everything when the session ends, so download any images you want to keep.
+
+The notebook downloads the latest Fooocus on every run, so you always get the current upstream code.
 
 ## Why the official notebook breaks
 
