@@ -9,7 +9,7 @@ A working version of the official [Fooocus](https://github.com/lllyasviel/Fooocu
 1. Click **Open in Colab** above and sign in with your Google account.
 2. **Runtime → Change runtime type → T4 GPU** (the free GPU works).
 3. Click ▶ on the code cell. If Colab warns that the notebook wasn't authored by Google, click **Run anyway**.
-4. Wait about 5–8 minutes while it installs and downloads models.
+4. Wait about 8–10 minutes while it installs and downloads models.
 5. Open the `https://….gradio.live` link printed at the end. Keep the Colab tab open while you use Fooocus.
 
 Your run, your images and any edits stay in your own Colab account. Nothing is saved back to this repo. To keep your own editable copy of the notebook, use **File → Save a copy in Drive**.
@@ -20,7 +20,8 @@ The notebook downloads the latest Fooocus on every run, so you always get the cu
 
 ## Why the official notebook breaks
 
-- **NumPy vs CuPy:** Fooocus needs NumPy 1.26, but Colab's CuPy is built for NumPy 2, so startup fails with `numpy.core.multiarray failed to import`. The fix removes CuPy, which Fooocus doesn't need.
-- **Gradio 3 vs new FastAPI:** Fooocus's Gradio 3.41 crashes on Colab's newer FastAPI with `unhashable type: 'dict'`. The fix pins FastAPI 0.104.1, Starlette 0.27.0 and Pydantic 1.10.19.
+Fooocus was built for Python 3.10–3.11 and packages from 2024. Colab keeps upgrading its own Python (3.13 as of late 2026) and preinstalled packages, so the official notebook fails in different ways over time: NumPy/CuPy import errors, Gradio/FastAPI `unhashable type: 'dict'` crashes, and packages that can't build on Python 3.13.
+
+This notebook doesn't use Colab's Python at all. It uses [uv](https://github.com/astral-sh/uv) to download Python 3.11 and install the exact versions in [`requirements-colab.txt`](requirements-colab.txt) (torch 2.1.0 with CUDA 12.1, Gradio 3.41.2 with a compatible FastAPI, NumPy 1.26.4) into a separate environment, then runs the latest Fooocus there. Colab updates can't change that environment.
 
 See [lllyasviel/Fooocus#4189](https://github.com/lllyasviel/Fooocus/issues/4189) for the upstream report.
